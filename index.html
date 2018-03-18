@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reddit Dashboard</title>
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+	<header>
+		<div class="header-limiter">
+			<h1><a href="localhost:8080"><span>Reddit Dashboard</span></a></h1>
+			<nav>
+				<a href="http://tutorialzine.com/2016/08/building-your-first-app-with-vue-js/">Download</a>
+			</nav>
+		</div>
+	</header>
+
+	<div id="main">
+		
+		<div class="container">
+			<subreddit name="waterloo"></subreddit>
+			<subreddit name="cryptocurrency"></subreddit>
+			<subreddit name="streetwear"></subreddit>
+			<subreddit name="pics"></subreddit>
+			<subreddit name="interestingasfuck"></subreddit>
+			<subreddit name="gifs"></subreddit>
+		</div>
+
+	</div>
+
+	<template id="subreddit">
+
+		<div class="subreddit">
+			<h2>{{ name | uppercase }}</h2>
+
+			<ul class="item-list">
+				<li v-for="obj in posts">
+					<post :item="obj"></post>
+				</li>
+			</ul>
+		</div>
+
+	</template>
+
+
+	<template id="post">
+
+		<div class="post">
+			<a :href="item.data.url" :style="getImageBackgroundCSS(item.data.thumbnail)" target="_blank" class="thumbnail"></a>
+
+			<div class="details">
+
+				<a :href="item.data.url" :title="item.data.title" target="_blank" class="title">
+					{{ item.data.title | truncate}}
+				</a>			
+				
+				<div class="action-buttons">
+					<a :href="'http://reddit.com' + item.data.permalink " title="Vote">
+						<i class="material-icons">thumbs_up_down</i>
+						{{item.data.score}}
+					</a>
+
+					<a :href="'http://reddit.com' + item.data.permalink " title="Go to discussion">
+						<i class="material-icons">forum</i>
+						{{item.data.num_comments}}
+					</a>
+				</div>
+
+			</div>
+		</div>
+		
+	</template>
+
+
+	<script src="js/vue.js"></script>
+	<script src="js/vue-resource.min.js"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>
