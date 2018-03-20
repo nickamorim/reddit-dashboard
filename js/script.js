@@ -33,13 +33,11 @@ var post = Vue.component('post', {
 				return 'background-image: url(' + img + ')';	
 			}
 			else {
-				return 'background-image: url(img/placeholder.png)';	
+				return 'background-image: url(/img/placeholder.png)';	
 			}
 		}		
 	}
 });
-
-
 
 
 /*-----------------

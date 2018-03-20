@@ -13,12 +13,22 @@
 
 	<header>
 		<div class="header-limiter">
-			<h1><a href="localhost:8080"><span>Reddit Dashboard</span></a></h1>
+			<h1><a href="localhost:8080"><span><i>Reddit Dashboard</i></span></a></h1>
 			<nav>
-				<a href="http://tutorialzine.com/2016/08/building-your-first-app-with-vue-js/">Download</a>
+				<img src="/img/reddit.png">
 			</nav>
 		</div>
 	</header>
+
+	<div class="searchBar">
+
+		<form action="">
+    		<label for="sreddit"><i><b>Add a Subreddit: </b></i></label>
+    		<input type="text" id="sreddit" name="subreddit" placeholder="Search">
+    	</form>
+
+	</div>
+
 
 	<div id="main">
 		
@@ -30,55 +40,56 @@
 			<subreddit name="interestingasfuck"></subreddit>
 			<subreddit name="gifs"></subreddit>
 		</div>
+		
+		<!-- Footer -->
+		<p>Made with <span style="color:#FF0000">&#9825</span> by Nicholas Amorim | <a href="www.github.com/nickamorim/reddit-dashboard"><i>Git Repository</i></a></p>
 
 	</div>
 
-	<template id="subreddit">
+<template id="subreddit">
 
-		<div class="subreddit">
-			<h2>{{ name | uppercase }}</h2>
+	<div class="subreddit">
+		<h2>{{ name | uppercase }}</h2>
 
-			<ul class="item-list">
-				<li v-for="obj in posts">
-					<post :item="obj"></post>
-				</li>
-			</ul>
-		</div>
+		<ul class="item-list">
+			<li v-for="obj in posts">
+				<post :item="obj"></post>
+			</li>
+		</ul>
+	</div>
 
-	</template>
+</template>
 
+<template id="post">
 
-	<template id="post">
+	<div class="post">
+		<a :href="item.data.url" :style="getImageBackgroundCSS(item.data.thumbnail)" target="_blank" class="thumbnail"></a>
 
-		<div class="post">
-			<a :href="item.data.url" :style="getImageBackgroundCSS(item.data.thumbnail)" target="_blank" class="thumbnail"></a>
+		<div class="details">
 
-			<div class="details">
+			<a :href="item.data.url" :title="item.data.title" target="_blank" class="title">
+				{{ item.data.title | truncate}}
+			</a>			
 
-				<a :href="item.data.url" :title="item.data.title" target="_blank" class="title">
-					{{ item.data.title | truncate}}
-				</a>			
-				
-				<div class="action-buttons">
-					<a :href="'http://reddit.com' + item.data.permalink " title="Vote">
-						<i class="material-icons">thumbs_up_down</i>
-						{{item.data.score}}
-					</a>
+			<div class="action-buttons">
+				<a :href="'http://reddit.com' + item.data.permalink " title="Vote">
+					<i class="material-icons">thumbs_up_down</i>
+					{{item.data.score}}
+				</a>
 
-					<a :href="'http://reddit.com' + item.data.permalink " title="Go to discussion">
-						<i class="material-icons">forum</i>
-						{{item.data.num_comments}}
-					</a>
-				</div>
-
+				<a :href="'http://reddit.com' + item.data.permalink " title="Go to discussion">
+					<i class="material-icons">forum</i>
+					{{item.data.num_comments}}
+				</a>
 			</div>
+
 		</div>
-		
-	</template>
+	</div>
 
+</template>
 
-	<script src="js/vue.js"></script>
-	<script src="js/vue-resource.min.js"></script>
-	<script src="js/script.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
