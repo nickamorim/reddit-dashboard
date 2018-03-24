@@ -10,9 +10,8 @@ a{
 }
 
 a:hover{
-	text-decoration: underline;
+	text-decoration: none;
 }
-
 
 html{
 	font: normal 16px sans-serif;
@@ -25,7 +24,6 @@ p{
 	margin-bottom: 2%;
 	color: #35495e;
 }
-
 
 .container{
 	padding: 27px 20px;
@@ -49,13 +47,6 @@ p{
 	box-shadow: 0 0 1px #ccc;
 }
 
-input, label {
-    float: left;
-    margin: 5px;
-    color: #35495e;
-    display: inline;
-}
-
 input[type=text], select {
     width: 100%;
     box-sizing: border-box;
@@ -68,6 +59,10 @@ input[type=text], select {
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
     margin-top: 3%;
+}
+
+input[type=submit], select {
+	display: inline-block;
 }
 
 /* Subreddit component */
@@ -138,7 +133,6 @@ input[type=text], select {
 	margin-right: 1px;
 }
 
-
 @media(max-width: 1250px){
 
 	.container{
@@ -146,7 +140,6 @@ input[type=text], select {
 		margin: 30px 30px 50px 30px;
 	}
 }
-
 
 @media(max-width: 500px){
 
@@ -159,13 +152,12 @@ input[type=text], select {
 header {
 	background-color: #35495e;
 	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.15);
-	padding: 20px 30px;
+	padding: 20px 20px;
 	box-sizing: border-box;	
 }
 
 header .header-limiter {
 	max-width: 1250px;
-	text-align: center;
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
@@ -178,46 +170,16 @@ header .header-limiter h1 {
     margin: 0;
     font-size: 18px;
     font-weight: normal;
-}
-
-header .header-limiter h1 span {
     color: #ffffff;
 }
 
-/* The header links */
-
-header .header-limiter {
-	color: #ffffff;
-	text-decoration: none;
-}
-
-header .header-limiter nav{
-	line-height: 40px;
-}
-
-header .header-limiter nav img{
-    display: inline-block;
-    height: 75%;
-    width: 25%;
-    padding: 0px 30px;
-}
-
-header .header-limiter nav a:hover{
-	opacity: 1;
-}
-
-header .header-limiter nav a.selected {
-	color: #608bd2;
-	pointer-events: none;
-	opacity: 1;
-}
-
-/* Making the header responsive */
+/* Responsive Header */
 
 @media all and (max-width: 600px) {
 
 	header {
 		padding: 20px 0;
+		text-align: center;
 	}
 
 	header .header-limiter{

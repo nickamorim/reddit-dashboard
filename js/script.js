@@ -2,6 +2,21 @@
 	Components 
 -----------------*/
 
+// Search submission
+function search(e){
+    if(e.keyCode === 13){
+        e.preventDefault(); // Ensure it is only this code that rusn
+        alert("Entered");
+    }
+}
+
+var inputElement = document.getElementById('searchText');
+inputElement.addEventListener('change', function(e) {
+	addSubreddit = e.target.value; 
+	alert("Desired subreddit: " + addSubreddit);
+	document.getElementById('userSubreddit').setAttribute("name", addSubreddit);
+})
+
 // Parent | Subreddit component containing a list of 'post' components. 
 var subreddit = Vue.component('subreddit',{
 	template: '#subreddit',

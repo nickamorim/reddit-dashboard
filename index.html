@@ -13,22 +13,17 @@
 
 	<header>
 		<div class="header-limiter">
-			<h1><a href="localhost:8080"><span><i>Reddit Dashboard</i></span></a></h1>
-			<nav>
-				<img src="/img/reddit.png">
-			</nav>
+			<h1><a href="localhost:8080"><span><i>Reddit Dashboard</i><span></a></h1>
 		</div>
 	</header>
 
 	<div class="searchBar">
 
-		<form action="">
-    		<label for="sreddit"><i><b>Add a Subreddit: </b></i></label>
-    		<input type="text" id="sreddit" name="subreddit" placeholder="Search">
+		<form id="searchForm" action="#">
+    		<input type="text" id="searchText" onkeypress="search(event)" placeholder="Search for a subreddit...">
     	</form>
 
 	</div>
-
 
 	<div id="main">
 		
@@ -39,6 +34,7 @@
 			<subreddit name="pics"></subreddit>
 			<subreddit name="interestingasfuck"></subreddit>
 			<subreddit name="gifs"></subreddit>
+			<subreddit id="userSubreddit"></subreddit>
 		</div>
 		
 		<!-- Footer -->
@@ -77,7 +73,7 @@
 					{{item.data.score}}
 				</a>
 
-				<a :href="'http://reddit.com' + item.data.permalink " title="Go to discussion">
+				<a :href="'http://reddit.com' + item.data.permalink " title="Discussion">
 					<i class="material-icons">forum</i>
 					{{item.data.num_comments}}
 				</a>
